@@ -42,6 +42,7 @@ function App() {
     setResult(result)
   }
 
+
   return (
     <div className="App">
       <form
@@ -49,7 +50,8 @@ function App() {
         onSubmit={formSubmit}
       >
         <select
-          onChange={(e) => setForm({...form, selector1: e.target.value})}
+          name='selector1'
+          onChange={(e) => setForm({...form, [e.target.name]: e.target.value})}
           className="border rounded border-black px-5 py-2"
           defaultValue={'DEFAULT'}
         >
@@ -63,7 +65,8 @@ function App() {
           ))}
         </select>
         <select
-          onChange={(e) => setForm({...form, selector2: e.target.value})}
+          name='selector2'
+          onChange={(e) => setForm({...form, [e.target.name]: e.target.value})}
           className="border rounded border-black px-5 py-2"
           defaultValue={'DEFAULT'}
         >
@@ -80,11 +83,12 @@ function App() {
           )}
         </select>
         <input
+          name='input'
           type="number"
           placeholder="Введите длину (км)"
           className="border rounded border-black px-5 py-2"
           value={form.input}
-          onChange={(e) => setForm({...form, input: e.target.value})}
+          onChange={(e) => setForm({...form, [e.target.name]: e.target.value})}
         ></input>
         <button type="submit" className="border rounded border-black px-5 py-2">
           Рассчитать
